@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahima Yadav — Portfolio</title>
+  <meta name="description" content="Professional portfolio showcasing projects, skills and contact details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed; /* purple */
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --text:#e6eef8;
+      --success:#10b981;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#071023 120%);
+      color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+
+    /* NAV */
+    header{position:sticky;top:12px;z-index:50}
+    .nav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:12px;backdrop-filter:blur(6px);box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4f46e5);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .brand h1{font-size:16px;margin:0}
+    .brand p{font-size:12px;margin:0;color:var(--muted)}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{padding:8px 12px;border-radius:8px;font-size:14px;color:var(--muted)}
+    .nav-links a:hover{background:var(--glass);color:var(--text)}
+    .cta-btn{background:linear-gradient(90deg,var(--accent),#5b21b6);padding:8px 12px;border-radius:10px;color:white;font-weight:600}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:40px 0}
+    .hero-left h2{font-size:34px;margin:0 0 8px}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .badge{background:var(--glass);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .actions{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);border:none;font-weight:700}
+
+    .hero-right{background:linear-gradient(180deg,var(--card),rgba(7,10,22,0.6));padding:20px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .profile{display:flex;gap:16px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:12px;background-image:linear-gradient(45deg,#3b82f6,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:white}
+    .meta h3{margin:0}
+    .meta p{margin:0;color:var(--muted);font-size:14px}
+
+    /* SKILLS + PROJECTS */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .skill-list{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px}
+
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+    .project-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
+    .project-card h4{margin:0 0 8px}
+    .project-card p{margin:0;color:var(--muted);font-size:13px}
+    .project-card .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+
+    /* EXPERIENCE TIMELINE */
+    .timeline{position:relative;padding-left:18px}
+    .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),#4f46e5);border-radius:2px}
+    .event{position:relative;padding:14px 12px;margin:8px 0;background:rgba(255,255,255,0.02);border-radius:8px}
+    .event::before{content:"";position:absolute;left:-18px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(124,58,237,0.12)}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+    .form-row{margin-bottom:12px}
+    .submit{display:inline-flex;align-items:center;gap:8px}
+
+    footer{padding:28px 0;text-align:center;color:var(--muted);font-size:13px}
+
+    /* MODAL */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:80}
+    .modal{width:min(900px,92%);background:linear-gradient(180deg,#071123, #06101c);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+
+    /* small screens */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .nav{padding:10px}
+      .nav-links{display:none}
+    }
+
+    /* small interactive flourish */
+    .typewriter{display:inline-block;border-right:2px solid rgba(255,255,255,0.08);padding-right:6px}
+    .sr-only{position:absolute;left:-9999px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav class="nav" aria-label="Main navigation">
+        <div class="brand">
+          <div class="logo">MY</div>
+          <div>
+            <h1>Mahima Yadav</h1>
+            <p>Aspiring Web Developer</p>
+          </div>
+        </div>
+        <div class="nav-links" role="navigation" aria-label="Quick links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Achievements/Certifications</a>
+          <a href="#contact" class="cta-btn">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-left">
+          <div class="badges">
+            <span class="badge">Open to work</span>
+            <span class="badge">Available for internships</span>
+            <span class="badge">Remote-friendly</span>
+          </div>
+          <h2>Hi — I’m Mahima. I build clean, accessible Web based experiences.</h2>
+          <p>I design and develop responsive websites and interactive interfaces that are fast, accessible and delightful to use. I enjoy turning ideas into polished products using HTML, CSS, and JavaScript.</p>
+
+          <div class="actions">
+            <button class="btn primary" id="view-work">View Projects</button>
+            <a href="#contact" class="btn">Get in touch</a>
+          </div>
+
+          <p style="margin-top:18px;color:var(--muted);font-size:13px">Specialties: <span class="typewriter" id="typewriter"></span></p>
+        </div>
+
+        <aside class="hero-right">
+          <div class="profile">
+            <div class="avatar">MY</div>
+            <div class="meta">
+              <h3>Mahima Yadav</h3>
+              <p>Aspiring Web Developer — <br> • HTML • CSS • JavaScript <br> • MySQL • Python • VB.NET</p>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;justify-content:space-between;gap:12px">
+            <div style="flex:1" class="card">
+              <h4 style="margin:0 0 6px">Experience</h4>
+              <p style="margin:0;color:var(--muted);font-size:13px">2+ years building production-ready college projects & web apps</p>
+            </div>
+            <div style="width:190px" class="card">
+              <h4 style="margin:0 0 6px">Contact</h4>
+              <p style="margin:0;color:var(--muted);font-size:13px">mahima.y5605@gmail.com</p>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
+            <button class="btn" id="download-resume">Download Resume</button>
+            <button class="btn" id="copy-email">Copy Email</button>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" style="margin-top:18px">
+        <div class="grid-2">
+          <div class="card">
+            <h3>About me</h3>
+            <p style="color:var(--muted)">I'm an aspiring Web Developer passionate about creating responsive, user friendly websites. I enjoy problem-solving, learning new technologies and delivering clean and effective code. My goal is to contribute to innovative web projects and grow as a skilled developer.</p>
+
+            <h4 style="margin-top:12px">Skills</h4>
+            <div class="skill-list" aria-label="Skills list">
+              <div class="skill">C</div>
+              <div class="skill">C++</div>
+              <div class="skill">HTML5</div>
+              <div class="skill">CSS</div>
+              <div class="skill">Responsive Design</div>
+              <div class="skill">JavaScript</div>
+              <div class="skill">VB.Net</div>
+              <div class="skill">Python</div>
+              <div class="skill">MySQL</div>
+              <div class="skill">PHP</div>
+              <div class="skill">DSA</div>
+              <div class="skill">Basic AI Fundamentals</div>
+            </div>
+
+            <h4 style="margin-top:12px">Soft Skills</h4>
+            <div class="skill-list">
+              <div class="skill">Time Management</div>
+              <div class="skill">Adaptability</div>
+              <div class="skill">Problem Solving</div>
+              <div class="skill">Analytical Thinking</div>
+              <div class="skill">Multitasking</div>
+            </div>
+
+            <h4 style="margin-top:12px">Tool</h4>
+            <div class="skill-list">
+              <div class="skill">VSCode</div>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <h3>Highlights</h3>
+            <ul style="color:var(--muted);margin:8px 0 0 18px;padding:0">
+              <li>Aspiring Web Developer passionate about creating responsive and user-friendly websites.</li>
+              <li>Hands-on experience in HTML/CSS, JavaScript, PHP, VB.NET & MySQL through projects like Restaurant Website, Music Player, Calculator, Registration Forms, etc.</li>
+              <li>Strong problem-solving skills and eagerness to learn new technologies.</li>
+              <li>Committed to writing clean and efficient code and contibuting to innovative web projects.</li>
+            </ul>
+
+            <h4 style="margin-top:12px">Education</h4>
+            <p style="color:var(--muted);margin:8px 0 0">Bachelor of Computer Applications—<br> Vivekananda College of Technology and Management affiliated to Raja Mahendra Pratap Singh State University, Aligarh, Uttar Pradesh</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" style="margin-top:22px">
+        <h3>Selected Projects</h3>
+        <p style="color:var(--muted);margin-top:6px">Click any project to open details.</p>
+
+        <div class="projects" aria-live="polite">
+          <article class="project-card" data-title="Responsive Calculator" data-desc="A mobile-first calculator built with HTML, CSS and JavaScript. Features responsive layout, keyboard support, and unit tests." data-tags="HTML,CSS,JS" data-link="#">
+            <h4>Responsive Calculator</h4>
+            <p>Mobile-first calculator app used as a college project.</p>
+            <div class="tags"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span></div>
+          </article>
+
+          <article class="project-card" data-title="Flashcard Quiz App" data-desc="Interactive flashcard app with add/edit/delete functionality and localStorage support." data-tags="HTML,CSS,JS" data-link="#">
+            <h4>Flashcard Quiz App</h4>
+            <p>Study tool to create and review flashcards with local storage persistence.</p>
+            <div class="tags"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span></div>
+          </article>
+
+          <article class="project-card" data-title="Portfolio Website" data-desc="This portfolio — single file, responsive and accessible." data-tags="HTML,CSS,JS" data-link="#">
+            <h4>Portfolio Website</h4>
+            <p>Clean single-file portfolio with interactive project modals and contact form.</p>
+            <div class="tags"><span class="skill">Design</span><span class="skill">Accessibility</span></div>
+          </article>
+
+          <article class="project-card" data-title="Restaurant Website" data-desc="Featuring interactive menus, order details and an engaging user interface." data-tags="HTML,CSS,JS" data-link="#">
+            <h4>Restaurant Website</h4>
+            <p>Designed interactive restaurant website with database integration.</p>
+            <div class="tags"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">PHP</span><span class="skill">MySQL</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" style="margin-top:22px">
+        <h3>Certifications & Achievements</h3>
+        <div class="timeline card" style="margin-top:12px">
+          <div class="event">
+            <strong>Gen AI Powered Data Analytics Job Simulation — Tata</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Earned hand-on experience in AI-Powered Data Analytics, including insights generation & practical problem solving.</p>
+          </div>
+          <div class="event">
+            <strong>Technology Consulting Job Simulation — Accenture</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Gained practical experirnce in technology consulting, including problem solving and solution design.</p>
+          </div>
+          <div class="event">
+            <strong>Solutions Architecture Job Simulation — AWS</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Gained practical skills in designing scalable, secure & efficient cloud solutions.</p>
+          </div>
+          <div class="event">
+            <strong>Data Analytics Job Simulation — Deloitte</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Earned hands-on experience in analyzing data, generating insights and solving real-world problems.</p>
+          </div>
+          <div class="event">
+            <strong>AI Fundamentals — IBM</strong>
+            <div style="color:var(--muted);font-size:13px">Aug 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Built a strong foundation and practical skills in AI concepts & tools.</p>
+          </div>
+          <div class="event">
+            <strong>Career Management Essentials — IBM</strong>
+            <div style="color:var(--muted);font-size:13px">Aug 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Learned key strategies for career growth, goal setting and professional development.</p>
+          </div>
+          <div class="event">
+            <strong>Internship Offer Letters — CodeAlpha, Cognifyz, Saiket Systems, International MUN</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Offered an internship as Web Developer, demostrating recognition of web development skills and potential.</p>
+          </div>
+          <div class="event">
+            <strong>Python Developer Quiz — HRCalcy</strong>
+            <div style="color:var(--muted);font-size:13px">Sep 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">It reflects my dedication to strengthning programming expertise and hands-on Python skills.</p>
+          </div>
+          <div class="event">
+            <strong>Coding Challenge — Naukri Campus</strong>
+            <div style="color:var(--muted);font-size:13px">Aug 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Solved diverse coding problems under time constraints, showcasing adaptibility & technical proficiency.</p>
+          </div>
+          <div class="event">
+            <strong>C Advance Level Champion — TechGig</strong>
+            <div style="color:var(--muted);font-size:13px">May 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Demonstrated profeciency in advanced C concepts through competitive challenges and assessments.</p>
+          </div>
+          <div class="event">
+            <strong>C++ Intermediate Level Champion — TechGig</strong>
+            <div style="color:var(--muted);font-size:13px">May 2025</div>
+            <p style="margin-top:8px;color:var(--muted)">Recognized for proficiency in coding, algorithm development, and logical reasoning.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:22px">
+        <h3>Contact</h3>
+        <div class="contact-grid" style="margin-top:12px">
+          <form id="contact-form" class="card" onsubmit="return false;">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" required placeholder="Your name" />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@email.com" />
+            </div>
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Hi Mahima, I'd like to talk about..."></textarea>
+            </div>
+            <div class="form-row">
+              <button class="btn submit primary" id="send-btn" onclick="Send()">Send Message</button>
+              <span id="form-status" style="margin-left:12px;color:var(--muted)"></span>
+
+            </div>
+          </form>
+
+
+          <aside class="card">
+            <h4>Contact Details</h4>
+            <p style="color:var(--muted)">Email: <strong>mahima.y5605@gmail.com</strong></p>
+            <p style="color:var(--muted)">Location: India</p>
+
+            <h4 style="margin-top:12px">Quick links</h4>
+            <p style="color:var(--muted)"><a href="https://github.com/mahima5605">GitHub</a> • <a href="https://www.linkedin.com/in/mahima-yadav-901244382">LinkedIn</a>
+
+            <div style="margin-top:14px">
+              <button class="btn" id="theme-toggle">Toggle Theme</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Mahima Yadav — Built with ❤️ using HTML, CSS & JavaScript</p>
+    </footer>
+  </div>
+
+  <!-- Modal template -->
+  <template id="modal-template">
+    <div class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal">
+        <button id="modal-close" class="btn" style="float:right">Close</button>
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc" style="color:var(--muted)"></p>
+        <div id="modal-links" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </template>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS with your public key (from Account > API keys)
+    emailjs.init("KvJ0xOVMa4VxL8jzR");
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop form reload
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        status.style.color = 'red';
+        status.textContent = '⚠️ Please fill in all fields.';
+        return;
+      }
+
+      status.style.color = 'gray';
+      status.textContent = 'Sending...';
+
+      // Send email via EmailJS
+      emailjs.send("service_m1637ul", "template_bjwwzw4", {
+        from_name: name,
+        from_email: email,
+        message: message
+      })
+      .then(() => {
+        status.style.color = 'green';
+        status.textContent = '✅ Message sent successfully!';
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        status.style.color = 'red';
+        status.textContent = '❌ Failed to send message. Please try again.';
+      });
+    });
+  });
+
+   
+
+    // small utilities
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typewriter
+    (function(){
+      const words = ['Frontend Development','Backend Development','Responsive Layouts','Programming Skills','Database Management'];
+      let idx=0, i=0;
+      const el = document.getElementById('typewriter');
+      function step(){
+        const word = words[idx];
+        el.textContent = word.slice(0,i+1);
+        i++;
+        if(i>=word.length){
+          setTimeout(()=>{ i=0; idx=(idx+1)%words.length; step(); },1200);
+        } else {
+          setTimeout(step,70);
+        }
+      }
+      step();
+    })();
+
+    // Project modal
+    $$('.project-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        const tpl = document.getElementById('modal-template').content.cloneNode(true);
+        tpl.getElementById('modal-title').textContent = card.dataset.title;
+        tpl.getElementById('modal-desc').textContent = card.dataset.desc;
+        const links = tpl.getElementById('modal-links');
+        const demo = document.createElement('a'); demo.href = card.dataset.link; demo.textContent = 'Back to Top'; demo.className='btn'; demo.style.marginRight='8px';
+        links.appendChild(demo);
+        const close = tpl.getElementById('modal-close');
+        document.body.appendChild(tpl);
+        close.addEventListener('click',()=>{document.querySelector('.modal-backdrop')?.remove()});
+        document.querySelector('.modal-backdrop').addEventListener('click', (e)=>{ if(e.target.classList.contains('modal-backdrop')) document.querySelector('.modal-backdrop')?.remove(); });
+      });
+    });
+
+    // View projects button
+    document.getElementById('view-work').addEventListener('click', ()=>{
+      document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Copy email
+    document.getElementById('copy-email').addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText('mahima.y5605@gmail.com');
+        alert('Email copied to clipboard');
+      }catch(e){
+        prompt('Copy email manually', 'mahima.y5605@gmail.com');
+      }
+    });
+
+    // Download resume
+
+    document.getElementById('download-resume').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = 'resume.pdf'; // Replace with actual path
+  a.download = 'resume.pdf';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+});
+
+
+    // Contact form (client-side simulation)
+// document.getElementById('send-btn').addEventListener('click', ()=>{
+//   const name = $('#name').value.trim();
+//   const email = $('#email').value.trim();
+//   const msg = $('#message').value.trim();
+//   const status = $('#form-status');
+//   if(!name || !email || !msg){ status.textContent='Please complete the form.'; return; }
+//   status.textContent='Sending...';
+//   setTimeout(()=>{ status.textContent='Message sent — I will reply soon!'; $('#contact-form').reset(); },1000);
+// })
+
+
+// (function() {
+//   emailjs.init("KvJ0xOVMa4VxL8jzR");
+// })();
+
+// document.getElementById('send-btn').addEventListener('click', function(e) {
+//   e.preventDefault();
+//   emailjs.send("service_m1637ul", "template_bjwwzw4", {
+//     from_name: "Mahima Test",
+//     from_email: "test@email.com",
+//     message: "Hello! Test message."
+//   })
+//   .then(() => alert("Message sent!"))
+//   .catch(err => alert("Error: " + JSON.stringify(err)));
+// });
+
+
+    // Theme toggle (simple) — toggles light-ish palette by swapping CSS variables
+    document.getElementById('theme-toggle').addEventListener('click', ()=>{
+      const root = document.documentElement;
+      const cur = getComputedStyle(root).getPropertyValue('--bg').trim();
+      if(cur === '#0f1724'){
+        root.style.setProperty('--bg','#f6f9ff');
+        root.style.setProperty('--card','#ffffff');
+        root.style.setProperty('--text','#061220');
+        root.style.setProperty('--muted','#475569');
+        root.style.setProperty('--glass','rgba(6,18,36,0.04)');
+      } else {
+        root.style.setProperty('--bg','#0f1724');
+        root.style.setProperty('--card','#0b1220');
+        root.style.setProperty('--text','#e6eef8');
+        root.style.setProperty('--muted','#94a3b8');
+        root.style.setProperty('--glass','rgba(255,255,255,0.04)');
+      }
+    });
+
+    // Small accessibility helpers
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') document.querySelector('.modal-backdrop')?.remove();
+    });
+  </script>
+</body>
+</html>
